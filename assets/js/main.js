@@ -123,12 +123,17 @@ function loadModule(module, script, additionalParams = {}) {
 }
 
 function addDynamicEventHandlers() {
+  console.log("addDynamicEventHandlers() called");
+
   $(".cars-table tbody tr")
     .off("click")
     .on("click", function () {
       let carId = $(this).data("car-id");
+      console.log("carId =", carId, "Element:", this);
       if (carId) {
         loadModule("cars", "edit", { car_id: carId });
+      } else {
+        console.warn("Pas de voiture trouvé pour la ligne cliquée");
       }
     });
 
@@ -136,10 +141,14 @@ function addDynamicEventHandlers() {
     .off("click")
     .on("click", function () {
       let garageId = $(this).data("garage-id");
+      console.log("garageId =", garageId, "Element:", this);
       if (garageId) {
         loadModule("garage", "edit", { garage_id: garageId });
+      } else {
+        console.warn("garage id manquant");
       }
     });
 
   $(".cars-table tbody tr, .garages-table tbody tr").css("cursor", "pointer");
+  console.log("Event handlers attached and cursors set to pointer");
 }

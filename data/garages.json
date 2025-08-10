@@ -6,7 +6,8 @@
         "phone": "01 23 45 67 89",
         "manager": "Jules Sorg",
         "email": "contact@garagepremium.fr",
-        "hours": "Lun-Ven: 8h-18h, Sam: 8h-12h"
+        "hours": "Lun-Ven: 8h-18h, Sam: 8h-12h",
+        "client": "clientb"
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "phone": "04 78 12 34 56",
         "manager": "Côme Bonal",
         "email": "info@garageluxe.fr",
-        "hours": "Lun-Ven: 7h30-19h, Sam: 8h-17h"
+        "hours": "Lun-Ven: 7h30-19h, Sam: 8h-17h",
+        "client": "clientb"
     },
     {
         "id": 3,
@@ -24,6 +26,7 @@
         "phone": "04 91 98 76 54",
         "manager": "Lucas Moulard",
         "email": "contact@garagesport.fr",
-        "hours": "Lun-Ven: 8h-18h30, Sam: 8h-16h"
+        "hours": "Lun-Ven: 8h-18h30, Sam: 8h-16h",
+        "client": "clientb"
     }
 ]

@@ -16,7 +16,7 @@ $clientGarages = array_filter($garagesData);
         </thead>
         <tbody>
             <?php foreach ($clientGarages as $garage): ?>
-            <tr>
+            <tr data-garage-id="<?php echo htmlspecialchars($garage['id']); ?>">
                 <td><?php echo htmlspecialchars($garage['name']); ?></td>
                 <td><?php echo htmlspecialchars($garage['address']); ?></td>
                 <td><?php echo htmlspecialchars($garage['phone']); ?></td>
