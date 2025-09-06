@@ -10,6 +10,22 @@ $(document).ready(function () {
   });
 });
 
+$(".dynamic-div").on(
+  "click",
+  ".cars-table tbody tr, .garages-table tbody tr",
+  function () {
+    if ($(this).data("car-id")) {
+      let carId = $(this).data("car-id");
+
+      loadModule("cars", "edit", { car_id: carId });
+    } else if ($(this).data("garage-id")) {
+      let garageId = $(this).data("garage-id");
+
+      loadModule("garage", "edit", { garage_id: garageId });
+    }
+  }
+);
+
 function initializeApp() {
   let currentClient = localStorage.getItem("selectedClient") || "clienta";
   $("#client-select").val(currentClient);
@@ -29,8 +45,7 @@ function changeClient(clientId) {
 
     updateModuleSelector(clientId);
 
-    let currentModule = $("#module-select").val() || "cars";
-    loadModule(currentModule, "list");
+    loadModule("cars", "list");
   });
 }
 
@@ -96,8 +111,6 @@ function loadModule(module, script, additionalParams = {}) {
 
         $(".dynamic-div").attr("data-module", module);
         $(".dynamic-div").attr("data-script", script);
-
-        addDynamicEventHandlers();
       } else {
         $(".dynamic-div").html(
           '<div class="error">Erreur lors du chargement</div>'
@@ -120,35 +133,4 @@ function loadModule(module, script, additionalParams = {}) {
       }
     },
   });
-}
-
-function addDynamicEventHandlers() {
-  console.log("addDynamicEventHandlers() called");
-
-  $(".cars-table tbody tr")
-    .off("click")
-    .on("click", function () {
-      let carId = $(this).data("car-id");
-      console.log("carId =", carId, "Element:", this);
-      if (carId) {
-        loadModule("cars", "edit", { car_id: carId });
-      } else {
-        console.warn("Pas de voiture trouvé pour la ligne cliquée");
-      }
-    });
-
-  $(".garages-table tbody tr")
-    .off("click")
-    .on("click", function () {
-      let garageId = $(this).data("garage-id");
-      console.log("garageId =", garageId, "Element:", this);
-      if (garageId) {
-        loadModule("garage", "edit", { garage_id: garageId });
-      } else {
-        console.warn("garage id manquant");
-      }
-    });
-
-  $(".cars-table tbody tr, .garages-table tbody tr").css("cursor", "pointer");
-  console.log("Event handlers attached and cursors set to pointer");
 }
